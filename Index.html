@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GOYSLOP.COM</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #050505;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           TELA DE ENTRADA
+        ========================= */
+
+        #entrada {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #0038b8 0%,
+                    #050505 45%,
+                    #000 100%
+                );
+
+            transition:
+                opacity 0.7s ease,
+                visibility 0.7s ease;
+        }
+
+        #entrada.saindo {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .entrada-box {
+            width: 90%;
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .entrada-logo {
+            font-size: clamp(38px, 9vw, 85px);
+            font-weight: 900;
+            letter-spacing: 5px;
+        }
+
+        .entrada-sub {
+            margin-top: 15px;
+            margin-bottom: 40px;
+
+            color: #fff;
+            opacity: 0.75;
+
+            font-size: 13px;
+            letter-spacing: 4px;
+        }
+
+        #entrarBtn {
+            border: 2px solid #fff;
+
+            background: #0038b8;
+            color: #fff;
+
+            padding: 18px 40px;
+
+            font-size: 16px;
+            font-weight: 900;
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 0 20px rgba(0, 56, 184, 0.5);
+
+            transition: 0.25s;
+        }
+
+        #entrarBtn:hover {
+            background: #fff;
+            color: #0038b8;
+
+            transform: scale(1.05);
+
+            box-shadow:
+                0 0 35px rgba(255, 255, 255, 0.3);
+        }
+
+        /* =========================
+           ESTRELAS
+        ========================= */
+
+        .estrela {
+            position: fixed;
+
+            color: #fff;
+
+            opacity: 0.08;
+
+            font-size: 22px;
+
+            pointer-events: none;
+
+            z-index: 0;
+
+            animation:
+                flutuar 8s infinite ease-in-out;
+        }
+
+        .e1 {
+            top: 15%;
+            left: 8%;
+        }
+
+        .e2 {
+            top: 35%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .e3 {
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+
+        .e4 {
+            bottom: 12%;
+            right: 20%;
+            animation-delay: 1s;
+        }
+
+        @keyframes flutuar {
+            0%,
+            100% {
+                transform: rotate(0deg) translateY(0);
+            }
+
+            50% {
+                transform: rotate(180deg) translateY(-20px);
+            }
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: relative;
+            z-index: 2;
+
+            padding: 28px 20px;
+
+            text-align: center;
+
+            background: #050505;
+
+            border-bottom: 1px solid #0038b8;
+        }
+
+        .logo {
+            color: #fff;
+
+            font-size: clamp(28px, 6vw, 55px);
+
+            font-weight: 900;
+
+            letter-spacing: 5px;
+        }
+
+        .domain {
+            margin-top: 8px;
+
+            color: #0038b8;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            letter-spacing: 4px;
+        }
+
+        /* =========================
+           ALERTA
+        ========================= */
+
+        .alerta {
+            position: relative;
+            z-index: 2;
+
+            padding: 13px 10px;
+
+            background: #fff;
+            color: #000;
+
+            text-align: center;
+
+            font-size: 13px;
+            font-weight: 900;
+
+            letter-spacing: 1px;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            position: relative;
+            z-index: 2;
+
+            width: min(1100px, 92%);
+
+            margin: auto;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            padding: 90px 20px 70px;
+
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 8vw, 85px);
+
+            line-height: 0.95;
+
+            font-weight: 900;
+        }
+
+        .hero h1 span {
+            color: #0038b8;
+        }
+
+        .hero p {
+            margin-top: 25px;
+
+            color: #bdbdbd;
+
+            font-size: clamp(15px, 2vw, 19px);
+        }
+
+        /* =========================
+           LIVE
+        ========================= */
+
+        .live {
+            margin-bottom: 60px;
+
+            padding: 35px;
+
+            background: #080808;
+
+            border: 1px solid #0038b8;
+
+            text-align: center;
+
+            box-shadow:
+                0 0 35px rgba(0, 56, 184, 0.12);
+        }
+
+        .live-title {
+            margin-bottom: 25px;
+
+            font-size: 25px;
+            font-weight: 900;
+        }
+
+        .live-dot {
+            display: inline-block;
+
+            width: 10px;
+            height: 10px;
+
+            margin-right: 8px;
+
+            background: red;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 12px red;
+
+            animation: pulsar 1.2s infinite;
+        }
+
+        @keyframes pulsar {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(0.7);
+            }
+        }
+
+        .live button {
+            padding: 16px 28px;
+
+            border: none;
+
+            background: #0038b8;
+            color: #fff;
+
+            font-size: 15px;
+            font-weight: 900;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        .live button:hover {
+            background: #fff;
+            color: #0038b8;
+
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+            margin-bottom: 70px;
+        }
+
+        .card {
+            min-height: 190px;
+
+            padding: 30px;
+
+            background: #0a0a0a;
+
+            border: 1px solid #222;
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: #0038b8;
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 30px rgba(0, 56, 184, 0.12);
+        }
+
+        .card h2 {
+            margin-bottom: 15px;
+
+            color: #0038b8;
+
+            font-size: 21px;
+        }
+
+        .card p {
+            color: #aaa;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+        /* =========================
+           MEDIDOR
+        ========================= */
+
+        .medidor {
+            margin-bottom: 70px;
+        }
+
+        .medidor h2 {
+            margin-bottom: 25px;
+
+            text-align: center;
+
+            font-size: 28px;
+        }
+
+        .barra {
+            width: 100%;
+            height: 28px;
+
+            overflow: hidden;
+
+            background: #151515;
+
+            border: 1px solid #222;
+        }
+
+        .barra-progresso {
+            width: 95%;
+            height: 100%;
+
+            background: #0038b8;
+
+            animation:
+                carregando 2s ease-out;
+        }
+
+        @keyframes carregando {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 95%;
+            }
+        }
+
+        .nivel {
+            margin-top: 15px;
+
+            color: #0038b8;
+
+            text-align: center;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+        }
+
+        /* =========================
+           QUIZ
+        ========================= */
+
+        .quiz {
+            padding: 70px 20px;
+
+            border-top: 1px solid #222;
+
+            text-align: center;
+        }
+
+        .quiz h2 {
+            margin-bottom: 40px;
+
+            color: #fff;
+
+            font-size: clamp(25px, 5vw, 40px);
+        }
+
+        .pergunta {
+            margin-bottom: 30px;
+
+            font-size: 25px;
+
+            font-weight: 900;
+        }
+
+        .opcoes {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 250px));
+
+            justify-content: center;
+
+            gap: 15px;
+        }
+
+        .opcoes button {
+            padding: 18px;
+
+            background: #0a0a0a;
+
+            border: 1px solid #0038b8;
+
+            color: #fff;
+
+            font-size: 17px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .opcoes button:hover {
+            background: #0038b8;
+
+            transform: scale(1.03);
+        }
+
+        #resultado {
+            display: none;
+
+            max-width: 650px;
+
+            margin: 35px auto 0;
+
+            padding: 30px;
+
+            background: #080808;
+
+            border: 1px solid #0038b8;
+        }
+
+        #resultado h3 {
+            margin-bottom: 15px;
+
+            color: #0038b8;
+
+            font-size: 30px;
+        }
+
+        #resultado p {
+            color: #bbb;
+
+            line-height: 1.6;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            position: relative;
+            z-index: 2;
+
+            margin-top: 30px;
+
+            padding: 35px 20px;
+
+            border-top: 1px solid #222;
+
+            color: #666;
+
+            text-align: center;
+
+            font-size: 12px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer strong {
+            color: #0038b8;
+        }
+
+        /* =========================
+           PLAYER YOUTUBE
+        ========================= */
+
+        #youtube-player {
+            position: fixed;
+
+            width: 200px;
+            height: 113px;
+
+            right: 10px;
+            bottom: 10px;
+
+            z-index: 1;
+
+            opacity: 0.01;
+
+            pointer-events: none;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .opcoes {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 65px;
+            }
+
+            .live {
+                padding: 25px 15px;
+            }
+
+            .entrada-logo {
+                letter-spacing: 2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TELA DE ENTRADA -->
+
+    <div id="entrada">
+
+        <div class="entrada-box">
+
+            <div class="entrada-logo">
+                ✡ GOYSLOP ✡
+            </div>
+
+            <div class="entrada-sub">
+                O BOM SENSO TERMINA AQUI
+            </div>
+
+            <button id="entrarBtn" onclick="entrarNoSite()">
+                ENTRAR NO GOYSLOP
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ESTRELAS -->
+
+    <div class="estrela e1">✡</div>
+    <div class="estrela e2">✡</div>
+    <div class="estrela e3">✡</div>
+    <div class="estrela e4">✡</div>
+
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            ✡ GOYSLOP ✡
+        </div>
+
+        <div class="domain">
+            GOYSLOP.COM
+        </div>
+
+    </header>
+
+
+    <!-- ALERTA -->
+
+    <div class="alerta">
+        ⚠️ ATENÇÃO: ESTE SITE PODE CAUSAR PERDA TEMPORÁRIA DE QI ⚠️
+    </div>
+
+
+    <main>
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <h1>
+                BEM-VINDO AO <span>SLOP</span>
+            </h1>
+
+            <p>
+                O único lugar onde o bom senso foi oficialmente cancelado.
+            </p>
+
+        </section>
+
+
+        <!-- LIVE -->
+
+        <section class="live">
+
+            <div class="live-title">
+
+                <span class="live-dot"></span>
+
+                SLOP AO VIVO
+
+            </div>
+
+            <button onclick="abrirLive()">
+                🔴 ACESSAR O SLOP
+            </button>
+
+        </section>
+
+
+        <!-- CARDS -->
+
+        <section class="cards">
+
+            <div class="card">
+
+                <h2>
+                    🧠 QI
+                </h2>
+
+                <p>
+                    Seu QI pode diminuir simplesmente por permanecer
+                    neste site por tempo suficiente.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>
+                    📺 CONTEÚDO
+                </h2>
+
+                <p>
+                    Conteúdo questionável, decisões duvidosas
+                    e absolutamente nenhuma responsabilidade editorial.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>
+                    ☢️ PERIGO
+                </h2>
+
+                <p>
+                    O consumo excessivo de slop pode resultar
+                    em perda temporária de neurônios.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- MEDIDOR -->
+
+        <section class="medidor">
+
+            <h2>
+                MEDIDOR DE SLOP
+            </h2>
+
+            <div class="barra">
+
+                <div class="barra-progresso"></div>
+
+            </div>
+
+            <div class="nivel">
+                NÍVEL ATUAL: ABSURDO
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ -->
+
+        <section class="quiz">
+
+            <h2>
+                ✡ TESTE DEFINITIVO DE QI ✡
+            </h2>
+
+            <div class="pergunta">
+                Quanto é 2 + 2?
+            </div>
+
+            <div class="opcoes">
+
+                <button onclick="responderQI('4')">
+                    4
+                </button>
+
+                <button onclick="responderQI('5')">
+                    5
+                </button>
+
+                <button onclick="responderQI('22')">
+                    22
+                </button>
+
+                <button onclick="responderQI('depende')">
+                    Depende
+                </button>
+
+            </div>
+
+
+            <div id="resultado">
+
+                <h3 id="qi"></h3>
+
+                <p id="mensagem"></p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            ✡ GOYSLOP.COM ✡
+        </p>
+
+        <p>
+            O bom senso foi temporariamente removido.
+        </p>
+
+        <p>
+            <strong>Use por sua própria conta e risco.</strong>
+        </p>
+
+    </footer>
+
+
+    <!-- PLAYER DO YOUTUBE -->
+
+    <div id="youtube-player"></div>
+
+
+    <script>
+
+        let player = null;
+
+        let youtubePronto = false;
+
+        let entrou = false;
+
+
+        /*
+         * ID DO VÍDEO
+         */
+
+        const VIDEO_ID = "a_KRfhOLss8";
+
+
+        /*
+         * ORIGEM DO SITE
+         *
+         * Isso ajuda o YouTube a identificar
+         * de qual domínio o player está sendo chamado.
+         */
+
+        const ORIGIN =
+            window.location.protocol === "http:" ||
+            window.location.protocol === "https:"
+                ? window.location.origin
+                : null;
+
+
+        /*
+         * CARREGA A API DO YOUTUBE
+         */
+
+        function carregarYouTube() {
+
+            const script =
+                document.createElement("script");
+
+            script.src =
+                "https://www.youtube.com/iframe_api";
+
+            script.async = true;
+
+            document.head.appendChild(script);
+        }
+
+
+        /*
+         * CHAMADA PELA API DO YOUTUBE
+         */
+
+        function onYouTubeIframeAPIReady() {
+
+            const configuracao = {
+
+                height: "113",
+
+                width: "200",
+
+                videoId: VIDEO_ID,
+
+                playerVars: {
+
+                    autoplay: 0,
+
+                    controls: 0,
+
+                    disablekb: 1,
+
+                    fs: 0,
+
+                    loop: 1,
+
+                    playlist: VIDEO_ID,
+
+                    playsinline: 1,
+
+                    rel: 0,
+
+                    modestbranding: 1
+
+                },
+
+                events: {
+
+                    onReady:
+                        function(event) {
+
+                            youtubePronto = true;
+
+                            event.target.setVolume(18);
+
+                            if (entrou) {
+
+                                iniciarAudio();
+
+                            }
+
+                        },
+
+                    onStateChange:
+                        function(event) {
+
+                            console.log(
+                                "YouTube estado:",
+                                event.data
+                            );
+
+                        },
+
+                    onError:
+                        function(event) {
+
+                            console.error(
+                                "Erro do YouTube:",
+                                event.data
+                            );
+
+                        }
+
+                }
+
+            };
+
+
+            /*
+             * Adiciona a origem somente
+             * quando o site está em HTTP/HTTPS.
+             */
+
+            if (ORIGIN) {
+
+                configuracao.playerVars.origin =
+                    ORIGIN;
+
+            }
+
+
+            player =
+                new YT.Player(
+                    "youtube-player",
+                    configuracao
+                );
+        }
+
+
+        /*
+         * INICIA O ÁUDIO
+         */
+
+        function iniciarAudio() {
+
+            if (
+                !player ||
+                !youtubePronto
+            ) {
+
+                return;
+
+            }
+
+
+            try {
+
+                player.unMute();
+
+                player.setVolume(18);
+
+                player.playVideo();
+
+                console.log(
+                    "Tentativa de reprodução iniciada."
+                );
+
+            }
+
+            catch (erro) {
+
+                console.error(
+                    "Erro ao iniciar áudio:",
+                    erro
+                );
+
+            }
+
+        }
+
+
+        /*
+         * ENTRADA NO SITE
+         */
+
+        function entrarNoSite() {
+
+            entrou = true;
+
+
+            /*
+             * Essa função é executada
+             * diretamente pelo clique do usuário.
+             */
+
+            iniciarAudio();
+
+
+            /*
+             * Remove a tela.
+             */
+
+            const entrada =
+                document.getElementById(
+                    "entrada"
+                );
+
+            entrada.classList.add(
+                "saindo"
+            );
+
+
+            /*
+             * Tentativas extras caso
+             * o player termine de carregar
+             * logo depois do clique.
+             */
+
+            setTimeout(
+                iniciarAudio,
+                300
+            );
+
+            setTimeout(
+                iniciarAudio,
+                1000
+            );
+
+            setTimeout(
+                iniciarAudio,
+                2000
+            );
+
+        }
+
+
+        /*
+         * ABRE A LIVE
+         */
+
+        function abrirLive() {
+
+            window.open(
+                "https://kick.com/kodhak",
+                "_blank",
+                "noopener,noreferrer"
+            );
+
+        }
+
+
+        /*
+         * TESTE DE QI
+         */
+
+        function responderQI(
+            resposta
+        ) {
+
+            const resultado =
+                document.getElementById(
+                    "resultado"
+                );
+
+            const qi =
+                document.getElementById(
+                    "qi"
+                );
+
+            const mensagem =
+                document.getElementById(
+                    "mensagem"
+                );
+
+
+            if (resposta === "4") {
+
+                qi.textContent =
+                    "QI: 73";
+
+                mensagem.textContent =
+                    "Você acertou 2 + 2. Parabéns. O sistema está impressionado.";
+
+            }
+
+
+            else if (resposta === "5") {
+
+                qi.textContent =
+                    "QI: 41";
+
+                mensagem.textContent =
+                    "Você errou uma conta de ensino fundamental. Mas pelo menos participou.";
+
+            }
+
+
+            else if (resposta === "22") {
+
+                qi.textContent =
+                    "QI: 22";
+
+                mensagem.textContent =
+                    "Você literalmente juntou os números. Não sabemos se isso é burrice ou inovação.";
+
+            }
+
+
+            else {
+
+                qi.textContent =
+                    "QI: ∞";
+
+                mensagem.textContent =
+                    "Você respondeu 'depende'. Finalmente alguém intelectualmente preparado para o caos.";
+
+            }
+
+
+            resultado.style.display =
+                "block";
+
+
+            resultado.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }
+
+
+        /*
+         * COMEÇA A CARREGAR O YOUTUBE
+         */
+
+        carregarYouTube();
+
+    </script>
+
+</body>
+</html>
